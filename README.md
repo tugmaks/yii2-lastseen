@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist tugmaks/yii2-lastseen "*"
+php composer.phar require --prefer-dist tugmaks/yii2-lastseen "0.1"
 ```
 
 or add
 
 ```
-"tugmaks/yii2-lastseen": "*"
+"tugmaks/yii2-lastseen": "0.1"
 ```
 
 to the require section of your `composer.json` file.
