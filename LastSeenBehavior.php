@@ -20,7 +20,7 @@ class LastSeenBehavior extends Behavior
      * @var string the attribute that will receive the value
      */
     public $lastSeenAttribute = 'lastSeen';
-    
+
     /**
      * @var string|Expression the value that will be used as a last seen
      */
@@ -47,9 +47,11 @@ class LastSeenBehavior extends Behavior
      */
     public function beforeAction(Event $event)
     {
-        /* @var $user ActiveRecord */
-        $user = Yii::$app->user->identity;
-        $user->{$this->lastSeenAttribute} = $this->value;
-        $user->save(true, [$this->lastSeenAttribute]);
+        if (!Yii::$app->user->isGuest) {
+            /* @var $user ActiveRecord */
+            $user = Yii::$app->user->identity;
+            $user->{$this->lastSeenAttribute} = $this->value;
+            $user->save(true, [$this->lastSeenAttribute]);
+        }
     }
 }
