@@ -16,7 +16,7 @@ php composer.phar require --prefer-dist tugmaks/yii2-lastseen "0.2"
 or add
 
 ```
-"tugmaks/yii2-lastseen": "0.2"
+"tugmaks/yii2-lastseen": "0.3"
 ```
 
 to the require section of your `composer.json` file.
