@@ -26,6 +26,9 @@ class LastSeenBehavior extends Behavior
      */
     public $value;
 
+    /**
+     * @inheritDoc
+     */
     public function init()
     {
         parent::init();
@@ -34,6 +37,9 @@ class LastSeenBehavior extends Behavior
         }
     }
 
+    /**
+     * @inheritDoc
+     */
     public function events()
     {
         return [
@@ -47,9 +53,10 @@ class LastSeenBehavior extends Behavior
      */
     public function beforeAction(Event $event)
     {
-        if (!Yii::$app->user->isGuest) {
+        $user = Yii::$app->get('user', false);
+        if ($user && !$user->isGuest) {
             /* @var $user ActiveRecord */
-            $user = Yii::$app->user->identity;
+            $user                             = Yii::$app->user->identity;
             $user->{$this->lastSeenAttribute} = $this->value;
             $user->save(true, [$this->lastSeenAttribute]);
         }
